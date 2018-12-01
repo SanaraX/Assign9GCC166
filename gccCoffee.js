@@ -20,12 +20,12 @@ function init() {
 }
 function createCoffeeJSON() {
     // Creates div and select objects
-    var order2 = $("<div>");
-    var select = $('<select/>')
-    var label = $('<label>').text('Coffee Type : ')
-    select.appendTo(label)
-    order2.attr('id', 'order')
-    select.attr('id', 'orderInput')
+    var orderDiv = $("<div>");
+    var orderSelectDiv = $('<select/>')
+    var orderLabel = $('<label>').text('Coffee Type : ')
+    orderSelectDiv.appendTo(orderLabel)
+    orderDiv.attr('id', 'order')
+    orderSelectDiv.attr('id', 'orderInput')
     // Creates XHR Object
     var xhr = new XMLHttpRequest();
     // OPEN - Type, URL/File, Async
@@ -34,11 +34,11 @@ function createCoffeeJSON() {
         if (this.status == 200) {
             let res = JSON.parse(this.responseText)
             for (var [key, val] of Object.entries(res[0])) {
-                $('<option/>', { value: val, text: key }).appendTo(select)
+                $('<option/>', { value: val, text: key }).appendTo(orderSelectDiv)
             }
-            label.appendTo(order2)
-            order2.on('change', latSel)
-            $("#cofimg_1").after(order2)
+            orderLabel.appendTo(orderDiv)
+            orderDiv.on('change', latteSelectChange)
+            $("#cofimg_1").after(orderDiv)
         }
     }
     // Sends request
@@ -46,32 +46,32 @@ function createCoffeeJSON() {
 }
 
 // CALLED TO CREATE THE LATTE FLAVOR DIV
-let latSel = function () {
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'coffee.json', true)
-    xhr.onload = function() {
-        if (this.status == 200) {
-            let res = JSON.parse(this.responseText)
-            console.log(res)
+let latteSelectChange = function () {
+    let orderSelect = $("#orderInput");
+    // Creates elements and set attributes
+    let latteFlavorDiv = $("<div>");
+    let latteSelectDiv = $("<select>");
+    let latteLabel = $('<label>').text('Latte Type : ')
+    latteSelectDiv.appendTo(latteLabel)
+    latteFlavorDiv.attr("id", "latteFlavor");
+    latteSelectDiv.attr("id", "latteInput")
+    if (orderSelect.val() == "latte") {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'coffee.json', true)
+        xhr.onload = function () {
+            if (this.status == 200) {
+                let res = JSON.parse(this.responseText)
+                for (var [key, val] of Object.entries(res[1])) {
+                    $('<option/>', { value: val, text: key }).appendTo(latteSelectDiv)
+                }
+                //Create and append the options
+                latteLabel.appendTo(latteFlavorDiv);
+                $("#orderInput").after(latteFlavorDiv);
+                console.log(latteFlavorDiv)
+            }
         }
-    }
-    let latteSelect = $("#orderInput");
-    console.log($("#orderInput").val())
-    if (latteSelect.val() == "latte") {
-        let latteFlavorArray = ["Chai", "Mocha", "Macchiato", "Pumpkin"];
-        let latteFlavorDiv = document.createElement("div");
-        let latteSelectDiv = document.createElement("select");
-        latteFlavorDiv.setAttribute("id", "latteFlavor");
-        //Create and append the options
-        latteFlavorArray.forEach(flavor => {
-            let option = document.createElement("option");
-            option.value = flavor;
-            option.text = flavor;
-            latteSelectDiv.appendChild(option);
-        });
-        latteFlavorDiv.appendChild(latteSelectDiv);
-        $(latteFlavorDiv).insertAfter(latteSelect);
-    } if (latteSelect.val() != "latte" && ($("#latteFlavor")) !== null) $("#latteFlavor").remove();
+        xhr.send();
+    } if (orderSelect.val() != "latte" && ($("#latteFlavor")) !== null) $("#latteFlavor").remove();
 }
 // CALLED TO PRINT RECEIPT TO THE SCREEN
 function printReceipt() {
