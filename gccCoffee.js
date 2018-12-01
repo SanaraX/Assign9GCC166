@@ -8,7 +8,6 @@ function init() {
     // Ensures all variables are declared here before they are used
     'use strict';
     // Sets document id properties
-    let nameInputID = $("#nameInput").focus();
     let taxOutputID = $("#taxOutputID");
     let totalOutputID = $("#totalOutputID");
     let grandTotalOutputID = $("#grandTotalOutputID");
@@ -20,15 +19,10 @@ function init() {
     // Declares variables
     let todayDate = new Date();
     $("#DateID").html("Today is: " + todayDate.toDateString())
-    getCoffeeJson();
-    $("#orderInput").on('change', function () {
-        console.log('Hello 2')
-    })
+    console.log(taxOutputID)
+    createCoffeeJSON();
 }
-let func = function () {
-    console.log('hello')
-}
-function getCoffeeJson() {
+function createCoffeeJSON() {
     // Creates div and select objects
     var order2 = $("<div>");
     var select = $('<select/>')
@@ -43,22 +37,11 @@ function getCoffeeJson() {
     xhr.onload = function () {
         if (this.status == 200) {
             let res = JSON.parse(this.responseText)
-            // var s = $('<select />');
-            // for (var val in res) {
-            //     $('<option />', { value: val, text: data[val] }).appendTo(s);
-            // }
-
-            // s.appendTo('body'); // or wherever it should be
             for (var [key, val] of Object.entries(res[0])) {
                 $('<option/>', { value: val, text: key }).appendTo(select)
             }
             label.appendTo(order2)
-            order2.on('change', function () {
-                console.log('HELLO 333')
-                console.log($("#order"))
-                console.log(document.getElementById("order"))
-
-            })
+            order2.on('change', latSel)
             $("#cofimg_1").after(order2)
         }
     }
@@ -71,7 +54,6 @@ let latSel = function () {
     let latteSelect = $("#orderInput");
     console.log($("#orderInput").val())
     if (latteSelect.val() == "latte") {
-        getCoffeeJson();
         let latteFlavorArray = ["Chai", "Mocha", "Macchiato", "Pumpkin"];
         let latteFlavorDiv = document.createElement("div");
         let latteSelectDiv = document.createElement("select");
