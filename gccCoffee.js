@@ -8,18 +8,14 @@ function init() {
     // Ensures all variables are declared here before they are used
     'use strict';
     // Sets document id properties
-    let taxOutputID = $("#taxOutputID");
-    let totalOutputID = $("#totalOutputID");
-    let grandTotalOutputID = $("#grandTotalOutputID");
-    // Makes tax and total text boxes readonly
+    $("#taxOutputID").prop('readonly', true);
+    $("#totalOutputID").prop('readonly', true);
+    $("#grandTotalOutputID").prop('readonly', true);
+    // Disables receipt button
     receiptButtonID.disabled = true;
-    taxOutputID.readOnly = true;
-    totalOutputID.readOnly = true;
-    grandTotalOutputID.readOnly = true;
     // Declares variables
     let todayDate = new Date();
     $("#DateID").html("Today is: " + todayDate.toDateString())
-    console.log(taxOutputID)
     createCoffeeJSON();
 }
 function createCoffeeJSON() {
@@ -51,6 +47,14 @@ function createCoffeeJSON() {
 
 // CALLED TO CREATE THE LATTE FLAVOR DIV
 let latSel = function () {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'coffee.json', true)
+    xhr.onload = function() {
+        if (this.status == 200) {
+            let res = JSON.parse(this.responseText)
+            console.log(res)
+        }
+    }
     let latteSelect = $("#orderInput");
     console.log($("#orderInput").val())
     if (latteSelect.val() == "latte") {

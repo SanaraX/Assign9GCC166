@@ -73,6 +73,8 @@
             <option value="cold">Cold</option>
         </select><br>
     </div>
+    
+    <button type="button" value="calculate" onclick="calcCoffee(orderInput.value, cityTaxInput.value, coffeeSizeInput.value, coffeeTempInput.value)">Submit</button>
     <br>
 
     <label for="taxOutputID">Tax Amount: </label>
@@ -81,7 +83,6 @@
     <label for="totalOutputID">Total Amount: </label>
     <input type="text" id="totalOutputID" name="name" placeholder="Total Amount" required="required" /><br>
 
-    <button type="button" value="calculate" onclick="calcCoffee(orderInput.value, cityTaxInput.value, coffeeSizeInput.value, coffeeTempInput.value)">Submit</button>
     <br />
     <br>
 
