@@ -1,0 +1,15 @@
+[
+    {
+        "Hazelnut": "hazelnut",
+        "Regular Decaf": "regular_decaf",
+        "Regular": "regular",
+        "Americano": "americano",
+        "Latte": "latte"
+    },
+    {
+        "Chai": "chai",
+        "Mocha" : "mocha",
+        "Macchiato" : "macchiato",
+        "Pumpkin" : "pumpkin"
+    }
+]

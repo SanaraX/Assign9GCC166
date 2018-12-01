@@ -1,0 +1,112 @@
+<!--Determines document is HTML5 -->
+<!DOCTYPE html>
+<html>
+<!--Non-visual information goes here -->
+
+<head>
+    <!--Tab title goes here -->
+    <title>
+        GCC Coffee
+    </title>
+</head>
+
+<!--Body and visual information goes here -->
+
+<body>
+    <!--2nd largest heading declaring it as assignment two-->
+    <h2>Assignment Nine</h2>
+    <h2>Order Page</h2>
+
+    <!--
+    <a href="./index.html">Orders</a>
+    <a href="./cart.html">Cart</a>
+    <a href="./receipt.html">Receipt</a>
+    -->
+
+    <!--Paragraph elements with IDs for styles and JavaScript-->
+    <p id="WelcomeID">Welcome to GCC Coffee</p>
+    <!--Creates greeting for the user-->
+    <p id="GreetingID">Hello!</p>
+    <!--Creates a date with current date for user-->
+    <p id="DateID"></p>
+    <!--Creates an image to go on the screen-->
+    <div id="cofimg_1">
+        <img class="CoffeeImg" src="cofimg.jpg" width="15%" height="15%">
+    </div>
+    <br>
+
+    <!--COFFEE TYPE-->
+    <!-- <div id="order">
+        <label for="orderInput">Coffee Type: </label>
+        <select id="orderInput" required="required" onchange="latteSelected()">
+            <option value="hazelnut" selected>Hazelnut</option>
+            <option value="regular_decaf">Regular Decaf</option>
+            <option value="regular">Regular</option>
+            <option value="americano">Americano</option>
+            <option value="latte">Latte</option>
+        </select><br>
+    </div> -->
+    <!--CITY TAX INPUT-->
+    <div id="cityTax">
+        <label for="cityTaxInput">City Tax Input: </label>
+        <select id="cityTaxInput" required="required">
+            <option value="glendale" selected>Glendale</option>
+            <option value="peoria">Peoria</option>
+            <option value="phoenix">Phoenix</option>
+        </select><br>
+    </div>
+    <!--COFFEE SIZE-->
+    <div id="coffeeSize">
+        <label for="coffeeSizeInput">Coffee Size: </label>
+        <select id="coffeeSizeInput" required="required">
+            <option value="small" selected>Small</option>
+            <option value="medium">Medium</option>
+            <option value="large">Large</option>
+            <option value="extraLarge">Extra Large</option>
+        </select><br>
+    </div>
+    <!--COFFEE TEMP-->
+    <div id="coffeeTemp">
+        <label for="coffeeTempInput">Coffee Temperature: </label>
+        <select id="coffeeTempInput" required="required">
+            <option value="hot" selected>Hot</option>
+            <option value="cold">Cold</option>
+        </select><br>
+    </div>
+    <br>
+
+    <label for="taxOutputID">Tax Amount: </label>
+    <input type="text" id="taxOutputID" name="name" placeholder="Tax Amount" required="required" /><br>
+
+    <label for="totalOutputID">Total Amount: </label>
+    <input type="text" id="totalOutputID" name="name" placeholder="Total Amount" required="required" /><br>
+
+    <button type="button" value="calculate" onclick="calcCoffee(orderInput.value, cityTaxInput.value, coffeeSizeInput.value, coffeeTempInput.value)">Submit</button>
+    <br />
+    <br>
+
+    <form action="./cart.html" method="GET">
+        <label for="grandTotalOutputID">Grand Total Amount: </label>
+        <input type="text" id="grandTotalOutputID" name="total" placeholder="Grand Total Amount" readonly="true" /><br>
+        <button type="submit" id="receiptButtonID" value="receipt" >Check Out Cart</button>
+    </form>
+
+    <!--Internal styling-->
+    <style>
+        p {
+            color: blue;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</body>
+<!--Script source-->
+<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous"></script>
+<script src="gccCoffee.js"></script>
+
+<!-- Prints alternative text to the screen in case script does not load-->
+<noscript>Sorry, JavaScript not supported!</noscript>
+
+</body>
+
+</html>

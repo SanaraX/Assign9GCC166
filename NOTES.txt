@@ -1,0 +1,5 @@
+XML Requests require XAMPP software to be installed
+- C:/xampp/htdocs/
+- Start XAMPP
+- Activate Apache
+- Go to localhost/folder name/file name

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Cart</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="styles.css" />
+</head>
+
+<body>
+    <h2>Cart Page</h2>
+
+    <!--
+    <a href="./index.html">Orders</a>
+    <a href="./cart.html">Cart</a>
+    <a href="./receipt.html">Receipt</a>
+    -->
+    <br />
+
+    <!--Generates labels and input text boxes for submitting the order-->
+    <label for="nameInput">Name: </label>
+    <input type="text" id="nameInput" name="name" placeholder="John Doe" required="required" /><br>
+
+    <label for="emailInput">Email: </label>
+    <input type="text" id="emailInput" name="email" placeholder="johndoe@example.com" required="required" /><br>
+
+    <label for="cardInput">Credit Card: </label>
+    <input type="text" id="cardInput" name="card" placeholder="1234-5678-9010-2030" required="required" /><br>
+
+    <label for="totalInput">Total: </label>
+    <input type="text" id="totalInput" name="total" readonly="true" /><br>
+
+    <button type="button" value="receipt" onclick="validateInput(nameInput.value, emailInput.value, cardInput.value)">Submit</button>
+
+    <!--Script source-->
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous"></script>
+    <script src="cart.js"></script>
+
+    <!-- Prints alternative text to the screen in case script does not load-->
+    <noscript>Sorry, JavaScript not supported!</noscript>
+</body>
+
+
+</html>
